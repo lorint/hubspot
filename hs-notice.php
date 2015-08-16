@@ -16,8 +16,9 @@ class WPHubspotNotice {
 	// Add Configuration Warning
 	//=============================================	
 	function configuration_warning(){
-                $hs_settings = get_option('hs_settings');
-		if(!WPHubspot::hs_is_customer($hs_settings['hs_portal'], $hs_settings['hs_appdomain'])){
+		global $myhubspotwp;
+        	$hs_settings = get_option('hs_settings');
+		if(!$myhubspotwp->hs_is_customer($hs_settings['hs_portal'], $hs_settings['hs_appdomain'])){
                     if(!$hs_settings['hs_config_notice']){
                         if(!(isset($_GET['page']) && $_GET['page'] == 'hubspot_settings')){
                             $this->admin_notice('configuration-warning',10);
